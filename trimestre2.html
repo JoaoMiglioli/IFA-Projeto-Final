@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>2º Trimestre: Acessibilidade Visual - 2º Ano EM</title>
+    <link rel="stylesheet" href="./trimestre2.css">
+</head>
+<body>
+
+    <a href="#main-content" class="skip-link">Pular para o conteúdo principal</a>
+
+    <div class="accessibility-bar" role="region" aria-label="Ferramentas de Acessibilidade">
+        <span>👁️ Acessibilidade Visual Ativa:</span>
+        <div class="acc-tools">
+            <button id="btn-contrast" title="Alternar Alto Contraste">◐ Alto Contraste</button>
+            <button id="btn-font-increase" title="Aumentar Fonte">A+</button>
+            <button id="btn-font-decrease" title="Diminuir Fonte">A-</button>
+            <button id="btn-font-reset" title="Restaurar Fonte">A</button>
+            <button id="btn-speak" title="Ouvir Conteúdo da Página">🔊 Ouvir Página</button>
+        </div>
+    </div>
+
+    <header>
+        <h1>2º Trimestre - Acessibilidade Visual</h1>
+        <nav aria-label="Navegação Principal">
+            <ul>
+                <li><a href="./index.html">Início</a></li>
+                <li><a href="./trimestre1.html">1º Trimestre</a></li>
+                <li><a href="./trimestre2.html" class="active" aria-current="page">2º Trimestre</a></li>
+                <li><a href="./trimestre3.html">3º Trimestre</a></li>
+            </ul>
+        </nav>
+    </header>
+
+    <main id="main-content">
+        <section class="title-box">
+            <h2>Projetos de Acessibilidade Visual</h2>
+            <p>No segundo trimestre, investigamos soluções para pessoas cegas ou com baixa visão. Desenvolvemos interfaces adaptadas a leitores de tela e contraste elevado ajustável.</p>
+        </section>
+
+        <section class="project-grid">
+            <article class="project-card">
+                <div>
+                    <h3>1. Tradutor de Textos para Braille</h3>
+                    <p>Desenvolvimento de um algoritmo simples capaz de converter frases em caracteres e células Braille para impressão tátil.</p>
+                </div>
+                <button class="btn-audio" onclick="readSpecificText('Projeto 1: Tradutor de Textos para Braille. Permite converter caracteres comuns em código Braille para impressão tátil.')">
+                    🔊 Ouvir Resumo
+                </button>
+            </article>
+        </section>
+
+        <section class="audio-demo">
+            <h3>🎧 Recursos de Audiodescrição na Página</h3>
+            <p>Utilize o botão <strong>"🔊 Ouvir Página"</strong> na barra superior para ouvir todo o conteúdo lido em áudio.</p>
+        </section>
+    </main>
+
+    <footer>
+        <p>&copy; 2026 - Projetos de Acessibilidade Visual</p>
+    </footer>
+
+    <script src="./acessibilidade.js"></script>
+</body>
+</html>

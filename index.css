@@ -1,0 +1,52 @@
+* { margin: 0; padding: 0; box-sizing: border-box; font-family: 'Segoe UI', Arial, sans-serif; }
+:root {
+    --bg-color: #f4f6f9;
+    --text-color: #222222;
+    --primary-color: #1e3a8a;
+    --accent-color: #2563eb;
+    --card-bg: #ffffff;
+    --border-color: #cbd5e1;
+    --focus-outline: #f59e0b;
+}
+
+body { background-color: var(--bg-color); color: var(--text-color); display: flex; flex-direction: column; min-height: 100vh; font-size: 1.1rem; line-height: 1.6; }
+
+/* Barra de Acessibilidade */
+.accessibility-bar { background-color: #0f172a; color: #ffffff; padding: 0.5rem 1.5rem; display: flex; justify-content: space-between; align-items: center; flex-wrap: wrap; gap: 1rem; }
+.skip-link { position: absolute; top: -100px; left: 10px; background: #f59e0b; color: #000; padding: 0.8rem 1.2rem; font-weight: bold; text-decoration: none; z-index: 10000; border-radius: 4px; }
+.skip-link:focus { top: 10px; }
+.acc-tools { display: flex; align-items: center; gap: 0.8rem; flex-wrap: wrap; }
+.acc-tools button { background: #334155; color: #ffffff; border: 2px solid #64748b; padding: 0.4rem 0.8rem; font-weight: bold; font-size: 1rem; cursor: pointer; border-radius: 6px; min-height: 44px; min-width: 44px; display: inline-flex; align-items: center; justify-content: center; transition: background 0.2s; }
+.acc-tools button:hover { background: #475569; }
+*:focus-visible { outline: 4px solid var(--focus-outline) !important; outline-offset: 3px !important; }
+
+/* Header */
+header { background-color: var(--primary-color); color: #ffffff; padding: 1.2rem 2rem; display: flex; justify-content: space-between; align-items: center; flex-wrap: wrap; gap: 1rem; box-shadow: 0 4px 6px rgba(0,0,0,0.1); }
+header h1 { font-size: 1.8rem; color: #ffffff; }
+nav ul { display: flex; list-style: none; gap: 1rem; flex-wrap: wrap; }
+nav a { color: #ffffff; text-decoration: none; font-weight: 700; padding: 0.6rem 1rem; border-radius: 6px; background-color: rgba(255, 255, 255, 0.1); min-height: 48px; display: inline-flex; align-items: center; border: 2px solid transparent; }
+nav a:hover, nav a.active { background-color: #ffffff; color: var(--primary-color); border-color: #ffffff; }
+
+/* Main */
+main { max-width: 1100px; margin: 2rem auto; padding: 0 1.5rem; flex: 1; width: 100%; }
+.hero { background: var(--card-bg); padding: 2.5rem; border-radius: 12px; margin-bottom: 2rem; border: 2px solid var(--border-color); box-shadow: 0 4px 12px rgba(0,0,0,0.05); }
+.hero h2 { font-size: 2.2rem; color: var(--primary-color); margin-bottom: 1rem; }
+.info-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); gap: 1.5rem; margin-bottom: 2rem; }
+.card { background: var(--card-bg); padding: 1.8rem; border-radius: 10px; border: 2px solid var(--border-color); border-left: 8px solid var(--accent-color); }
+.card h3 { font-size: 1.4rem; color: var(--primary-color); margin-bottom: 0.5rem; }
+.theme-highlight { background-color: #e0f2fe; border: 2px solid #0284c7; padding: 1.5rem; border-radius: 10px; margin-top: 1.5rem; }
+.theme-highlight h3 { color: #0369a1; margin-bottom: 0.5rem; }
+.highlight-visual { background-color: #fef3c7; border-color: #d97706; }
+.highlight-visual h3 { color: #b45309; }
+footer { background-color: #0f172a; color: #f1f5f9; text-align: center; padding: 1.5rem; margin-top: auto; }
+
+/* Alto Contraste */
+body.high-contrast {
+    --bg-color: #000000 !important; --text-color: #ffff00 !important; --primary-color: #000000 !important;
+    --card-bg: #111111 !important; --border-color: #ffff00 !important; --focus-outline: #00ffff !important;
+}
+body.high-contrast header, body.high-contrast footer, body.high-contrast .accessibility-bar { background-color: #000000 !important; border-bottom: 3px solid #ffff00 !important; }
+body.high-contrast h1, body.high-contrast h2, body.high-contrast h3, body.high-contrast p, body.high-contrast span { color: #ffff00 !important; }
+body.high-contrast nav a, body.high-contrast button { background-color: #000000 !important; color: #00ffff !important; border: 2px solid #00ffff !important; }
+body.high-contrast nav a:hover, body.high-contrast nav a.active { background-color: #00ffff !important; color: #000000 !important; }
+body.high-contrast .theme-highlight { background-color: #111111 !important; border-color: #ffff00 !important; }

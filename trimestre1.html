@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>1º Trimestre: Acessibilidade Motora - 2º Ano EM</title>
+    <link rel="stylesheet" href="./trimestre1.css">
+</head>
+<body>
+
+    <a href="#main-content" class="skip-link">Pular para o conteúdo principal</a>
+
+    <div class="accessibility-bar" role="region" aria-label="Ferramentas de Acessibilidade">
+        <span>♿ Acessibilidade Motora & Visual:</span>
+        <div class="acc-tools">
+            <button id="btn-contrast" title="Alternar Alto Contraste">◐ Alto Contraste</button>
+            <button id="btn-font-increase" title="Aumentar Fonte">A+</button>
+            <button id="btn-font-decrease" title="Diminuir Fonte">A-</button>
+            <button id="btn-font-reset" title="Restaurar Fonte">A</button>
+            <button id="btn-speak" title="Ouvir Conteúdo">🔊 Ouvir Página</button>
+        </div>
+    </div>
+
+    <header>
+        <h1>1º Trimestre - Acessibilidade Motora</h1>
+        <nav aria-label="Navegação Principal">
+            <ul>
+                <li><a href="./index.html">Início</a></li>
+                <li><a href="./trimestre1.html" class="active" aria-current="page">1º Trimestre</a></li>
+                <li><a href="./trimestre2.html">2º Trimestre</a></li>
+                <li><a href="./trimestre3.html">3º Trimestre</a></li>
+            </ul>
+        </nav>
+    </header>
+
+    <main id="main-content">
+        <section class="title-box">
+            <h2>Projetos de Acessibilidade Motora</h2>
+            <p>O foco do primeiro trimestre foi criar soluções digitais e físicas para pessoas com limitação de mobilidade. Aplicamos conceitos de áreas de clique ampliado (mínimo de 48px) e navegação via teclado.</p>
+        </section>
+
+        <section class="project-grid">
+            <article class="project-card">
+                <div>
+                    <span class="tag">Projeto Hardware / Software</span>
+                    <h3>1. Teclado Adaptado com Colmeia</h3>
+                    <p>Desenvolvimento de uma interface com teclas virtuais de acionamento amplo e filtros de tremores para facilitar a digitação.</p>
+                </div>
+                <button class="btn-large" onclick="alert('Exibindo protótipo do Teclado Adaptado')">Explorar Projeto</button>
+            </article>
+        </section>
+
+        <section class="motor-demo-box">
+            <h3>🎮 Teste de Acessibilidade Motora na Prática</h3>
+            <p>Pressione a tecla <strong>TAB</strong> do seu teclado para navegar entre os elementos desta página sem o uso do mouse.</p>
+        </section>
+    </main>
+
+    <footer>
+        <p>&copy; 2026 - Projetos de Acessibilidade Motora</p>
+    </footer>
+
+    <script src="./acessibilidade.js"></script>
+</body>
+</html>
