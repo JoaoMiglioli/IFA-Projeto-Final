@@ -31,3 +31,20 @@ body.high-contrast header, body.high-contrast footer, body.high-contrast .access
 body.high-contrast .project-card, body.high-contrast .title-box, body.high-contrast .audio-demo { background-color: #111111 !important; border: 3px solid #ffff00 !important; color: #ffff00 !important; }
 body.high-contrast h2, body.high-contrast h3, body.high-contrast p { color: #ffff00 !important; }
 body.high-contrast .btn-audio, body.high-contrast nav a { background-color: #000000 !important; color: #00ffff !important; border: 2px solid #00ffff !important; }
+
+/* Galeria com Foco em Acessibilidade Visual */
+.gallery-section { margin-bottom: 2.5rem; }
+.gallery-section h2 { color: var(--primary-color); font-size: 1.8rem; margin-bottom: 1.2rem; }
+.gallery-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap: 1.5rem; }
+
+.photo-card { background: #ffffff; border: 3px solid var(--border-color); border-radius: 12px; overflow: hidden; }
+.photo-card img { width: 100%; height: 220px; object-fit: cover; display: block; border-bottom: 3px solid var(--border-color); }
+.photo-card figcaption { padding: 1.2rem; font-size: 1rem; color: #451a03; line-height: 1.5; display: flex; flex-direction: column; gap: 0.5rem; }
+
+.btn-audio-sm { background: #78350f; color: #ffffff; border: none; padding: 0.4rem 0.8rem; font-weight: bold; border-radius: 6px; cursor: pointer; align-self: flex-start; min-height: 40px; }
+
+/* Alto Contraste */
+body.high-contrast .photo-card { background: #111111 !important; border-color: #ffff00 !important; }
+body.high-contrast .photo-card figcaption { color: #ffff00 !important; }
+body.high-contrast .photo-card img { border-bottom-color: #ffff00 !important; }
+body.high-contrast .btn-audio-sm { background-color: #000000 !important; color: #00ffff !important; border: 2px solid #00ffff !important; }

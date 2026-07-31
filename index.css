@@ -50,3 +50,17 @@ body.high-contrast h1, body.high-contrast h2, body.high-contrast h3, body.high-c
 body.high-contrast nav a, body.high-contrast button { background-color: #000000 !important; color: #00ffff !important; border: 2px solid #00ffff !important; }
 body.high-contrast nav a:hover, body.high-contrast nav a.active { background-color: #00ffff !important; color: #000000 !important; }
 body.high-contrast .theme-highlight { background-color: #111111 !important; border-color: #ffff00 !important; }
+
+/* Galeria de Fotos - Página Inicial */
+.gallery-section { margin-bottom: 2rem; }
+.gallery-section h2 { color: var(--primary-color); font-size: 1.8rem; margin-bottom: 1.2rem; }
+.gallery-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap: 1.5rem; }
+
+.photo-card { background: var(--card-bg); border: 2px solid var(--border-color); border-radius: 12px; overflow: hidden; box-shadow: 0 4px 6px rgba(0,0,0,0.05); }
+.photo-card img { width: 100%; height: 220px; object-fit: cover; display: block; border-bottom: 2px solid var(--border-color); }
+.photo-card figcaption { padding: 1rem; font-size: 0.95rem; color: var(--text-color); line-height: 1.4; }
+
+/* Alto Contraste */
+body.high-contrast .photo-card { background: #111111 !important; border-color: #ffff00 !important; }
+body.high-contrast .photo-card figcaption { color: #ffff00 !important; }
+body.high-contrast .photo-card img { border-bottom-color: #ffff00 !important; }
