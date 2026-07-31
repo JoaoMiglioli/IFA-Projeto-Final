@@ -1,0 +1,735 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Portfólio de Acessibilidade - 2º Ano do Ensino Médio</title>
+    <style>
+        /* Base e Reset */
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Segoe UI', Arial, sans-serif;
+        }
+
+        :root {
+            --bg-color: #f4f6f9;
+            --text-color: #222222;
+            --primary-color: #1e3a8a;
+            --accent-color: #2563eb;
+            --card-bg: #ffffff;
+            --border-color: #cbd5e1;
+            --focus-outline: #f59e0b;
+        }
+
+        body {
+            background-color: var(--bg-color);
+            color: var(--text-color);
+            display: flex;
+            flex-direction: column;
+            min-height: 100vh;
+            font-size: 1.1rem;
+            line-height: 1.6;
+        }
+
+        /* Barra de Acessibilidade Superior (Acessibilidade Visual e Motora) */
+        .accessibility-bar {
+            background-color: #0f172a;
+            color: #ffffff;
+            padding: 0.5rem 1.5rem;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            flex-wrap: wrap;
+            gap: 1rem;
+        }
+
+        .skip-link {
+            position: absolute;
+            top: -100px;
+            left: 10px;
+            background: #f59e0b;
+            color: #000;
+            padding: 0.8rem 1.2rem;
+            font-weight: bold;
+            text-decoration: none;
+            z-index: 10000;
+            border-radius: 4px;
+        }
+
+        .skip-link:focus {
+            top: 10px;
+        }
+
+        .acc-tools {
+            display: flex;
+            align-items: center;
+            gap: 0.8rem;
+            flex-wrap: wrap;
+        }
+
+        .acc-tools button {
+            background: #334155;
+            color: #ffffff;
+            border: 2px solid #64748b;
+            padding: 0.4rem 0.8rem;
+            font-weight: bold;
+            font-size: 1rem;
+            cursor: pointer;
+            border-radius: 6px;
+            min-height: 44px;
+            min-width: 44px;
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            transition: background 0.2s;
+        }
+
+        .acc-tools button:hover {
+            background: #475569;
+        }
+
+        /* Foco Visível Reforçado (Acessibilidade Motora) */
+        *:focus-visible {
+            outline: 4px solid var(--focus-outline) !important;
+            outline-offset: 3px !important;
+        }
+
+        /* Cabeçalho Principal */
+        header {
+            background-color: var(--primary-color);
+            color: #ffffff;
+            padding: 1.2rem 2rem;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            flex-wrap: wrap;
+            gap: 1rem;
+            box-shadow: 0 4px 6px rgba(0,0,0,0.1);
+        }
+
+        header h1 {
+            font-size: 1.8rem;
+            color: #ffffff;
+        }
+
+        nav ul {
+            display: flex;
+            list-style: none;
+            gap: 1rem;
+            flex-wrap: wrap;
+        }
+
+        nav a {
+            color: #ffffff;
+            text-decoration: none;
+            font-weight: 700;
+            padding: 0.6rem 1rem;
+            border-radius: 6px;
+            background-color: rgba(255, 255, 255, 0.1);
+            min-height: 48px;
+            display: inline-flex;
+            align-items: center;
+            border: 2px solid transparent;
+        }
+
+        nav a:hover, nav a.active {
+            background-color: #ffffff;
+            color: var(--primary-color);
+            border-color: #ffffff;
+        }
+
+        /* Conteúdo Principal */
+        main {
+            max-width: 1100px;
+            margin: 2rem auto;
+            padding: 0 1.5rem;
+            flex: 1;
+            width: 100%;
+        }
+
+        .hero {
+            background: var(--card-bg);
+            padding: 2.5rem;
+            border-radius: 12px;
+            margin-bottom: 2rem;
+            border: 2px solid var(--border-color);
+            box-shadow: 0 4px 12px rgba(0,0,0,0.05);
+        }
+
+        .hero h2 {
+            font-size: 2.2rem;
+            color: var(--primary-color);
+            margin-bottom: 1rem;
+        }
+
+        .info-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: 1.5rem;
+            margin-bottom: 2rem;
+        }
+
+        .card {
+            background: var(--card-bg);
+            padding: 1.8rem;
+            border-radius: 10px;
+            border: 2px solid var(--border-color);
+            border-left: 8px solid var(--accent-color);
+        }
+
+        .card h3 {
+            font-size: 1.4rem;
+            color: var(--primary-color);
+            margin-bottom: 0.5rem;
+        }
+
+        .theme-highlight {
+            background-color: #e0f2fe;
+            border: 2px solid #0284c7;
+            padding: 1.5rem;
+            border-radius: 10px;
+            margin-top: 1.5rem;
+        }
+
+        .theme-highlight h3 {
+            color: #0369a1;
+            margin-bottom: 0.5rem;
+        }
+
+        /* Rodapé */
+        footer {
+            background-color: #0f172a;
+            color: #f1f5f9;
+            text-align: center;
+            padding: 1.5rem;
+            margin-top: auto;
+            font-size: 1rem;
+        }
+
+        /* Modo de Alto Contraste (Acessibilidade Visual) */
+        body.high-contrast {
+            --bg-color: #000000 !important;
+            --text-color: #ffff00 !important;
+            --primary-color: #000000 !important;
+            --card-bg: #111111 !important;
+            --border-color: #ffff00 !important;
+            --focus-outline: #00ffff !important;
+        }
+
+        body.high-contrast header,
+        body.high-contrast footer,
+        body.high-contrast .accessibility-bar {
+            background-color: #000000 !important;
+            border-bottom: 3px solid #ffff00 !important;
+        }
+
+        body.high-contrast h1, 
+        body.high-contrast h2, 
+        body.high-contrast h3,
+        body.high-contrast p,
+        body.high-contrast span {
+            color: #ffff00 !important;
+        }
+
+        body.high-contrast nav a,
+        body.high-contrast button {
+            background-color: #000000 !important;
+            color: #00ffff !important;
+            border: 2px solid #00ffff !important;
+        }
+
+        body.high-contrast nav a:hover,
+        body.high-contrast nav a.active {
+            background-color: #00ffff !important;
+            color: #000000 !important;
+        }
+
+        body.high-contrast .theme-highlight {
+            background-color: #111111 !important;
+            border-color: #ffff00 !important;
+        }
+    </style>
+</head>
+<body>
+
+    <!-- Link de atalho para teclado (Acessibilidade Motora) -->
+    <a href="#main-content" class="skip-link">Pular para o conteúdo principal</a>
+
+    <!-- Barra de Ferramentas de Acessibilidade -->
+    <div class="accessibility-bar" role="region" aria-label="Ferramentas de Acessibilidade">
+        <span>♿ Recursos de Acessibilidade:</span>
+        <div class="acc-tools">
+            <button id="btn-contrast" title="Alternar Alto Contraste" aria-label="Alternar modo de alto contraste">◐ Alto Contraste</button>
+            <button id="btn-font-increase" title="Aumentar Texto" aria-label="Aumentar tamanho do texto">A+</button>
+            <button id="btn-font-decrease" title="Diminuir Texto" aria-label="Diminuir tamanho do texto">A-</button>
+            <button id="btn-font-reset" title="Tamanho Normal" aria-label="Restaurar tamanho padrão do texto">A</button>
+            <button id="btn-speak" title="Ouvir Conteúdo" aria-label="Ouvir texto da página via síntese de voz">🔊 Ouvir Página</button>
+        </div>
+    </div>
+
+    <!-- Cabeçalho -->
+    <header>
+        <h1>2º Ano do Ensino Médio</h1>
+        <nav aria-label="Navegação Principal">
+            <ul>
+                <li><a href="./index.html" class="active" aria-current="page">Início</a></li>
+                <li><a href="./trimestre1.html">1º Trimestre (Motora)</a></li>
+                <li><a href="./trimestre2.html">2º Trimestre (Visual)</a></li>
+                <li><a href="./trimestre3.html">3º Trimestre</a></li>
+            </ul>
+        </nav>
+    </header>
+
+    <!-- Conteúdo Principal -->
+    <main id="main-content">
+        <section class="hero">
+            <h2>Portal de Projetos da Turma</h2>
+            <p>Seja bem-vindo ao nosso espaço de aprendizado prático e inclusivo. Esta página foi construída seguindo diretrizes internacionais de acessibilidade web (WCAG), garantindo navegação confortável para todas as pessoas.</p>
+        </section>
+
+        <section class="info-grid">
+            <article class="card">
+                <h3>📚 Disciplina</h3>
+                <p>Projetos Integrados & Tecnologia Aplicada</p>
+            </article>
+
+            <article class="card">
+                <h3>👥 Turma e Turno</h3>
+                <p>2º Ano - Ensino Médio | Matutino</p>
+            </article>
+
+            <article class="card">
+                <h3>👨‍🏫 Coordenação</h3>
+                <p>Corpo Docente de Projetos</p>
+            </article>
+        </section>
+
+        <section class="card">
+            <h2>Eixos Temáticos do Ano</h2>
+            <p>Ao longo do ano letivo, nossa turma dedica cada trimestre a investigar e criar soluções tecnológicas para diferentes áreas da inclusão social:</p>
+            
+            <div class="theme-highlight">
+                <h3>♿ 1º Trimestre: Acessibilidade Motora</h3>
+                <p>Foco na criação de interfaces com alvos de clique ampliados, suporte total a navegação via teclado, atalhos acessíveis e tecnologias assistivas para controle motor reduzido.</p>
+            </div>
+
+            <div class="theme-highlight" style="background-color: #fef3c7; border-color: #d97706;">
+                <h3 style="color: #b45309;">👁️ 2º Trimestre: Acessibilidade Visual</h3>
+                <p>Foco na otimização de contraste, leitor de tela integrado, audiodescrição de conteúdos, redimensionamento dinâmico de texto e compatibilidade com leitores Braille.</p>
+            </div>
+        </section>
+    </main>
+
+    <!-- Rodapé -->
+    <footer>
+        <p>&copy; 2026 - 2º Ano do Ensino Médio | Hospedado via GitHub Pages com Recursos de Acessibilidade</p>
+    </footer>
+
+    <!-- Scripts de Acessibilidade -->
+    <script>
+        // Alto Contraste
+        const btnContrast = document.getElementById('btn-contrast');
+        btnContrast.addEventListener('click', () => {
+            document.body.classList.toggle('high-contrast');
+            const isContrast = document.body.classList.contains('high-contrast');
+            localStorage.setItem('highContrast', isContrast);
+        });
+        if (localStorage.getItem('highContrast') === 'true') {
+            document.body.classList.add('high-contrast');
+        }
+
+        // Controle de Tamanho de Fonte
+        let fontSizePercent = parseInt(localStorage.getItem('fontSizePercent')) || 100;
+        function setFontSize(percent) {
+            fontSizePercent = Math.min(Math.max(percent, 80), 160);
+            document.documentElement.style.fontSize = fontSizePercent + '%';
+            localStorage.setItem('fontSizePercent', fontSizePercent);
+        }
+        document.getElementById('btn-font-increase').addEventListener('click', () => setFontSize(fontSizePercent + 10));
+        document.getElementById('btn-font-decrease').addEventListener('click', () => setFontSize(fontSizePercent - 10));
+        document.getElementById('btn-font-reset').addEventListener('click', () => setFontSize(100));
+        if (localStorage.getItem('fontSizePercent')) {
+            setFontSize(fontSizePercent);
+        }
+
+        // Síntese de Voz (Acessibilidade Visual / Leitor de Página)
+        const btnSpeak = document.getElementById('btn-speak');
+        btnSpeak.addEventListener('click', () => {
+            if ('speechSynthesis' in window) {
+                if (speechSynthesis.speaking) {
+                    speechSynthesis.cancel();
+                    btnSpeak.textContent = '🔊 Ouvir Página';
+                    return;
+                }
+                const textToRead = document.querySelector('main').innerText;
+                const utterance = new SpeechSynthesisUtterance(textToRead);
+                utterance.lang = 'pt-BR';
+                utterance.onend = () => { btnSpeak.textContent = '🔊 Ouvir Página'; };
+                speechSynthesis.speak(utterance);
+                btnSpeak.textContent = '⏹️ Parar Leitura';
+            } else {
+                alert('Seu navegador não possui suporte para síntese de voz nativa.');
+            }
+        });
+    </script>
+</body>
+</html>
+```eof
+
+```html:trimestre1.html
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>1º Trimestre: Acessibilidade Motora - 2º Ano EM</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Segoe UI', Arial, sans-serif;
+        }
+
+        :root {
+            --bg-color: #f0fdf4;
+            --text-color: #14532d;
+            --primary-color: #15803d;
+            --accent-color: #22c55e;
+            --card-bg: #ffffff;
+            --border-color: #bbf7d0;
+            --focus-outline: #d97706;
+        }
+
+        body {
+            background-color: var(--bg-color);
+            color: #1c1917;
+            display: flex;
+            flex-direction: column;
+            min-height: 100vh;
+            font-size: 1.1rem;
+            line-height: 1.6;
+        }
+
+        .accessibility-bar {
+            background-color: #064e3b;
+            color: #ffffff;
+            padding: 0.5rem 1.5rem;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            flex-wrap: wrap;
+            gap: 1rem;
+        }
+
+        .skip-link {
+            position: absolute;
+            top: -100px;
+            left: 10px;
+            background: #f59e0b;
+            color: #000;
+            padding: 0.8rem 1.2rem;
+            font-weight: bold;
+            text-decoration: none;
+            z-index: 10000;
+            border-radius: 4px;
+        }
+
+        .skip-link:focus {
+            top: 10px;
+        }
+
+        .acc-tools button {
+            background: #047857;
+            color: #ffffff;
+            border: 2px solid #a7f3d0;
+            padding: 0.4rem 0.8rem;
+            font-weight: bold;
+            font-size: 1rem;
+            cursor: pointer;
+            border-radius: 6px;
+            min-height: 48px;
+            min-width: 48px;
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+        }
+
+        *:focus-visible {
+            outline: 5px solid var(--focus-outline) !important;
+            outline-offset: 4px !important;
+        }
+
+        header {
+            background-color: var(--primary-color);
+            color: #ffffff;
+            padding: 1.2rem 2rem;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            flex-wrap: wrap;
+            gap: 1rem;
+        }
+
+        header h1 {
+            font-size: 1.8rem;
+        }
+
+        nav ul {
+            display: flex;
+            list-style: none;
+            gap: 1rem;
+            flex-wrap: wrap;
+        }
+
+        nav a {
+            color: #ffffff;
+            text-decoration: none;
+            font-weight: 700;
+            padding: 0.6rem 1rem;
+            border-radius: 6px;
+            background-color: rgba(255, 255, 255, 0.15);
+            min-height: 50px;
+            display: inline-flex;
+            align-items: center;
+        }
+
+        nav a:hover, nav a.active {
+            background-color: #ffffff;
+            color: var(--primary-color);
+        }
+
+        main {
+            max-width: 1100px;
+            margin: 2rem auto;
+            padding: 0 1.5rem;
+            flex: 1;
+            width: 100%;
+        }
+
+        .title-box {
+            background: var(--card-bg);
+            padding: 2rem;
+            border-radius: 12px;
+            border-left: 8px solid var(--primary-color);
+            margin-bottom: 2rem;
+            box-shadow: 0 4px 6px rgba(0,0,0,0.05);
+        }
+
+        .title-box h2 {
+            color: var(--primary-color);
+            font-size: 2rem;
+            margin-bottom: 0.5rem;
+        }
+
+        .project-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
+            gap: 1.8rem;
+        }
+
+        .project-card {
+            background: var(--card-bg);
+            padding: 2rem;
+            border-radius: 12px;
+            border: 2px solid var(--border-color);
+            box-shadow: 0 4px 8px rgba(0,0,0,0.04);
+            display: flex;
+            flex-direction: column;
+            justify-content: space-between;
+        }
+
+        .project-card h3 {
+            color: var(--primary-color);
+            font-size: 1.4rem;
+            margin-bottom: 0.5rem;
+        }
+
+        .project-card .tag {
+            display: inline-block;
+            background: #dcfce7;
+            color: #166534;
+            padding: 0.3rem 0.8rem;
+            border-radius: 20px;
+            font-weight: bold;
+            font-size: 0.9rem;
+            margin-bottom: 1rem;
+            width: fit-content;
+        }
+
+        /* Botões Ampliados para Acessibilidade Motora */
+        .btn-large {
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            padding: 0.8rem 1.5rem;
+            background-color: var(--primary-color);
+            color: #ffffff;
+            text-decoration: none;
+            font-weight: bold;
+            border-radius: 8px;
+            min-height: 52px;
+            min-width: 160px;
+            margin-top: 1.2rem;
+            font-size: 1.1rem;
+            border: none;
+            cursor: pointer;
+        }
+
+        .btn-large:hover {
+            background-color: #166534;
+        }
+
+        .motor-demo-box {
+            background: #ffffff;
+            border: 3px dashed var(--primary-color);
+            padding: 1.5rem;
+            border-radius: 12px;
+            margin-top: 2rem;
+        }
+
+        footer {
+            background-color: #064e3b;
+            color: #ffffff;
+            text-align: center;
+            padding: 1.5rem;
+            margin-top: auto;
+        }
+
+        /* Alto Contraste */
+        body.high-contrast {
+            background-color: #000000 !important;
+            color: #ffff00 !important;
+        }
+
+        body.high-contrast header,
+        body.high-contrast footer,
+        body.high-contrast .accessibility-bar {
+            background-color: #000000 !important;
+            border-bottom: 3px solid #ffff00 !important;
+        }
+
+        body.high-contrast .project-card,
+        body.high-contrast .title-box,
+        body.high-contrast .motor-demo-box {
+            background-color: #111111 !important;
+            border: 2px solid #ffff00 !important;
+            color: #ffff00 !important;
+        }
+
+        body.high-contrast h2, body.high-contrast h3, body.high-contrast p {
+            color: #ffff00 !important;
+        }
+
+        body.high-contrast .btn-large,
+        body.high-contrast nav a {
+            background-color: #000000 !important;
+            color: #00ffff !important;
+            border: 2px solid #00ffff !important;
+        }
+    </style>
+</head>
+<body>
+
+    <a href="#main-content" class="skip-link">Pular para o conteúdo principal</a>
+
+    <div class="accessibility-bar" role="region" aria-label="Ferramentas de Acessibilidade">
+        <span>♿ Acessibilidade Motora & Visual:</span>
+        <div class="acc-tools">
+            <button id="btn-contrast" title="Alternar Alto Contraste">◐ Alto Contraste</button>
+            <button id="btn-font-increase" title="Aumentar Fonte">A+</button>
+            <button id="btn-font-decrease" title="Diminuir Fonte">A-</button>
+            <button id="btn-font-reset" title="Restaurar Fonte">A</button>
+            <button id="btn-speak" title="Ouvir Conteúdo">🔊 Ouvir Página</button>
+        </div>
+    </div>
+
+    <header>
+        <h1>1º Trimestre - Acessibilidade Motora</h1>
+        <nav aria-label="Navegação Principal">
+            <ul>
+                <li><a href="./index.html">Início</a></li>
+                <li><a href="./trimestre1.html" class="active" aria-current="page">1º Trimestre</a></li>
+                <li><a href="./trimestre2.html">2º Trimestre</a></li>
+                <li><a href="./trimestre3.html">3º Trimestre</a></li>
+            </ul>
+        </nav>
+    </header>
+
+    <main id="main-content">
+        <section class="title-box">
+            <h2>Projetos de Acessibilidade Motora</h2>
+            <p>O foco do primeiro trimestre foi criar soluções digitais e físicas para pessoas com limitação de mobilidade fina, tremores ou paralisia parcial. Aplicamos conceitos de áreas de clique ampliado (mínimo de 48px) e navegação 100% via teclado.</p>
+        </section>
+
+        <section class="project-grid">
+            <article class="project-card">
+                <div>
+                    <span class="tag">Projeto Hardware / Software</span>
+                    <h3>1. Teclado Adaptado com Colméia</h3>
+                    <p>Desenvolvimento de uma interface com teclas virtuais de acionamento amplo e filtros de tremores para facilitar a digitação de alunos com dificuldades motoras.</p>
+                </div>
+                <button class="btn-large" onclick="alert('Exibindo protótipo do Teclado Adaptado')">Explorar Projeto</button>
+            </article>
+
+            <article class="project-card">
+                <div>
+                    <span class="tag">Web Design Acessível</span>
+                    <h3>2. Mouse por Gestos de Cabeça</h3>
+                    <p>Pesquisa e testes de softwares livres que convertem movimentos de cabeça captados pela webcam em movimentos do ponteiro do mouse.</p>
+                </div>
+                <button class="btn-large" onclick="alert('Exibindo protótipo de Navegação por Gestos')">Explorar Projeto</button>
+            </article>
+        </section>
+
+        <!-- Seção de Teste de Navegação por Teclado (Recurso Pedagógico) -->
+        <section class="motor-demo-box">
+            <h3>🎮 Teste de Acessibilidade Motora na Prática</h3>
+            <p>Pressione a tecla <strong>TAB</strong> do seu teclado para navegar entre os elementos desta página. Note como a borda destacada de alta visibilidade facilita a navegação sem necessidade de usar o mouse!</p>
+        </section>
+    </main>
+
+    <footer>
+        <p>&copy; 2026 - 2º Ano do Ensino Médio | Projetos de Acessibilidade Motora</p>
+    </footer>
+
+    <script>
+        // Scripts Globais de Acessibilidade
+        document.getElementById('btn-contrast').addEventListener('click', () => {
+            document.body.classList.toggle('high-contrast');
+            localStorage.setItem('highContrast', document.body.classList.contains('high-contrast'));
+        });
+        if (localStorage.getItem('highContrast') === 'true') document.body.classList.add('high-contrast');
+
+        let fontSizePercent = parseInt(localStorage.getItem('fontSizePercent')) || 100;
+        function setFontSize(percent) {
+            fontSizePercent = Math.min(Math.max(percent, 80), 160);
+            document.documentElement.style.fontSize = fontSizePercent + '%';
+            localStorage.setItem('fontSizePercent', fontSizePercent);
+        }
+        document.getElementById('btn-font-increase').addEventListener('click', () => setFontSize(fontSizePercent + 10));
+        document.getElementById('btn-font-decrease').addEventListener('click', () => setFontSize(fontSizePercent - 10));
+        document.getElementById('btn-font-reset').addEventListener('click', () => setFontSize(100));
+        if (localStorage.getItem('fontSizePercent')) setFontSize(fontSizePercent);
+
+        const btnSpeak = document.getElementById('btn-speak');
+        btnSpeak.addEventListener('click', () => {
+            if ('speechSynthesis' in window) {
+                if (speechSynthesis.speaking) {
+                    speechSynthesis.cancel();
+                    btnSpeak.textContent = '🔊 Ouvir Página';
+                    return;
+                }
+                const textToRead = document.querySelector('main').innerText;
+                const utterance = new SpeechSynthesisUtterance(textToRead);
+                utterance.lang = 'pt-BR';
+                utterance.onend = () => { btnSpeak.textContent = '🔊 Ouvir Página'; };
+                speechSynthesis.speak(utterance);
+                btnSpeak.textContent = '⏹️ Parar Leitura';
+            }
+        });
+    </script>
+</body>
+</html>
